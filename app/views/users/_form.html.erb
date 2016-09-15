@@ -1,0 +1,27 @@
+
+<!--
+< % form_for @user d o f %>
+	< %= f.label : email %>
+ 	< %= f.text_field : email, type : email(put quotes) %>
+ 	< %= f.label : password %>
+ 	< %= f.password_field : password %>
+ 	< %= f.submit Create User %>
+ < % en d %>
+
+
+<form action="/users" method="post"></form>
+	<input type="text" name="user[email]">
+	< %= f.text_field : email, type : email(put quotes) %> translates into name="user[email]" -->
+
+<!-- ERB TAGS GET EXECUTED BEFORE HTML -->
+
+
+<div class="text-field">
+  <%= form.label :email %>
+  <%= form.text_field :email, type: 'email' %>
+</div>
+
+<div class="password-field">
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+</div>

@@ -1,0 +1,18 @@
+
+<p>--------------------------------------------</p>
+(You'll find this in the views/users/index file)<br>
+Hello!
+<br>
+Testing!<br>
+
+
+<!-- This creates an EDIT button on the user index page -->
+<%= link_to "Update Profile", edit_user_path(current_user.id) if signed_in? %>
+<!-- the edit_user_path will direct us to the users controller->EDIT method (have to create one!) -> it then directs us to the edit.html.erb page under view/users (have to create one!) 
+ -->
+
+<p>--------------------------------------------</p>
+
+<% User.all.each do |x| %>
+	<button><a href="/users/<%= x.id %>"><%= x.email %></a></button>
+<% end %> 
