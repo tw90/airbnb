@@ -1,0 +1,30 @@
+<!-- SEARCH BAR -->
+<%= form_for Listing.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
+    <%= text_field_tag :term, params[:term], placeholder:"Where do you wanna go?" %>
+    <%= f.submit 'search', class: 'btn btn-primary' %>
+  <% end %>
+
+<div class="container">
+	<h1 id="middleHeading">All Listings</h1>
+		<div class="row">
+			<% @listings.each do |listings| %>
+				<div id="cardDesign" class="col-sm-4" style="background-color:lavender;">Listed By: <%= listings.user.email %>
+				<br>
+				Name: <%= listings.name %>
+				<br>
+				Location: <%= listings.location %>
+				<br>
+				Home Type: <%= listings.home_type %>
+				<br>
+				Price: <%= listings.price %>
+				<br>
+				Accommodates <%= listings.num_of_people %> People
+				<br>
+				----------------------------------------
+				<br>
+			</div>
+
+			<% end %>
+		</div>
+	<br>
+</div>

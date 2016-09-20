@@ -1,5 +1,7 @@
 class UsersController < Clearance::UsersController
 
+  # standard practice is to place CRUD actions in this order: index / show / new / edit / create / update / destroy
+
   def create
   	@user = User.new(user_params)
   	if @user.save
@@ -40,6 +42,10 @@ class UsersController < Clearance::UsersController
   private
   # private so the public wont be able to view the name, email and password 
   # this allows user to change...
+  
+  # this whitelists the controller parameters to prevent wrongful mass assignment
+  # in this case, we allow and require :name, :email and :password parameters for valid use of update
+  # the syntax for this is .require and .permit
   def user_params
   	params.require(:user).permit(:name, :email, :password)
   end

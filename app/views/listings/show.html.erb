@@ -1,0 +1,31 @@
+<h1> Listing Show Page</h1>
+
+<% if signed_in? %>
+	Listed By: <%= @listing.user.email %>
+	<br>
+	Name: <%= @listing.name%>
+	<br>
+	Location: <%= @listing.location%>
+	<br>
+	Home Type: <%= @listing.home_type%>
+	<br>
+	Price: <%= @listing.price%>
+	<br>
+	Accommodates <%= @listing.num_of_people%> People
+
+	<%= link_to "Delete", listing_path(@listing.id),
+		method: :delete,
+		data: { confirm: "Are you sure?" } %>
+<% else %>
+	Listed By: <%= @listing.user.email %>
+	<br>
+	Name: <%= @listing.name%>
+	<br>
+	Location: <%= @listing.location%>
+	<br>
+	Home Type: <%= @listing.home_type%>
+	<br>
+	Price: <%= @listing.price%>
+	<br>
+	Accommodates <%= @listing.num_of_people%> People
+<% end %>

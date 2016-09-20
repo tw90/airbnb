@@ -13,13 +13,20 @@ Rails.application.routes.draw do
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
   # resources creates routes for users
-  resources :users
+  # resources :users
   root "users#index"
   
   # this creates the methods index, new and creat for listings
   # can also use exclude: [...]
-  resources :listings, only: [:index, :new, :create]
+  resources :listings
 
+  # get method with that url, go to session controller then create_from_omniauth
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
+  resources :users, only: [:show, :edit, :update, :destroy]
+
+  # ROUTE FOR SEARCHKICK
+  get '/search', to: 'listings#search'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

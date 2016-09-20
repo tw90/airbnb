@@ -12,3 +12,29 @@ class CreateUsers < ActiveRecord::Migration
     add_index :users, :remember_token
   end
 end
+
+# class ChangeRememberTokenToNotNull < ActiveRecord::Migration
+#   def change
+#     b = []
+#     User.all.each { |x| b << x.remember_token }
+
+#     remove_column :users, :remember_token
+#     add_column :users, :remember_token, :string, limit: 128
+
+#     User.all.each_with_index { |x, i| x.update(remember_token: b[i]) }
+
+#   end
+# end
+
+# class ChangeRememberTokenToNotNull < ActiveRecord::Migration
+#   def change
+#     b = []
+#     User.all.each { |x| b << x.remember_token }
+
+#     remove_column :users, :remember_token
+#     add_column :users, :remember_token, :string, limit: 128
+
+#     User.all.each_with_index { |x, i| x.update(remember_token: b[i]) }
+
+#   end
+# end

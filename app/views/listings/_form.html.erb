@@ -1,0 +1,18 @@
+<%= form_for @listing do |form| %>
+<%= form.label :name_of_property %>
+<%= form.text_field :name%>
+<br>
+<%= form.label :location%>
+<%= form.text_field :location%>
+<br>
+<%= form.label :price%>
+<%= form.number_field :price%>
+<br>
+<%= form.label :num_of_people%>
+<%= form.number_field :num_of_people%>
+<br>
+<%= form.label :home_type %>
+<%= form.text_field :home_type%>
+<br>
+<%= form.submit "Save Listing", class: "btn btn-danger" %>
+<% end %>

@@ -5,29 +5,46 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', sign_in_path %>
-    <% end %>
-
-    <!-- error -->
-    <div id="flash">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
+  <nav class="navbar navbar-inverse" id="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">AirBnB</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to 'HOME', root_path%></li>
+        <% if signed_in? %>
+        <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
+        <%else%>
+        <li><%= link_to 'Sign in', sign_in_path %></li> 
+        <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li> 
+        <%end%>
+      </ul>
     </div>
+  </nav>
+      <!-- error -->
+      <div id="flash">
+        <% flash.each do |key, value| %>
+          <div class="flash <%= key %>"><%= value %></div>
+        <% end %>
+      </div>
 
-<%= yield %>
-<footer>
-<p>--------------------------------------------</p>
-(You'll find this in the views/layouts/application file)<br>
-This is a footer
-<p>--------------------------------------------</p>
-</footer>
+  <%= yield %>
+  <footer>
+  <p>--------------------------------------------</p>
+  (You'll find this in the views/layouts/application file)<br>
+  This is a footer
+  <p>--------------------------------------------</p>
+  </footer>
 
 </body>
 </html>

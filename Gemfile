@@ -29,6 +29,19 @@ gem 'clearance'
 # Adding Figaro
 gem 'figaro'
 
+# Adding OmniAuth
+gem 'omniauth-facebook'
+gem 'omniauth'
+
+# Adding searchkick
+gem 'searchkick'
+
+# Adding carrierwave
+gem 'carrierwave'
+
+# Adding minimagick
+gem "mini_magick"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
