@@ -28,7 +28,6 @@ class UsersController < Clearance::UsersController
 
   def show
   	@user = User.find(params[:id])
-
   end
 
   # def user_from_params
@@ -47,7 +46,7 @@ class UsersController < Clearance::UsersController
   # in this case, we allow and require :name, :email and :password parameters for valid use of update
   # the syntax for this is .require and .permit
   def user_params
-  	params.require(:user).permit(:name, :email, :password)
+  	params.require(:user).permit(:name, :email, :password, {avatars:[]})
   end
 
 

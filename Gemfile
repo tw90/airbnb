@@ -37,10 +37,18 @@ gem 'omniauth'
 gem 'searchkick'
 
 # Adding carrierwave
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
 # Adding minimagick
 gem "mini_magick"
+
+# Adding sidekiq
+gem 'sidekiq'
+gem 'sinatra'
+
+gem 'redis'
+
+gem 'braintree'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -2,11 +2,18 @@ Rails.application.routes.draw do
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
+  require 'redis'
+
   resources :users, controller: "clearance/users", only: [:create] do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
   end
+
+  resources :payments, only: [:new, :create]
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
@@ -14,11 +21,13 @@ Rails.application.routes.draw do
 
   # resources creates routes for users
   # resources :users
-  root "users#index"
+  root "listings#index"
   
   # this creates the methods index, new and creat for listings
   # can also use exclude: [...]
-  resources :listings
+  resources :listings do 
+    resources :reservations
+  end
 
   # get method with that url, go to session controller then create_from_omniauth
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"

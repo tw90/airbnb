@@ -1,31 +1,60 @@
 <h1> Listing Show Page</h1>
-
+<br>
+<div class="row">
+	<div id="cardDesign" class="col-sm-4" style="background-color:lavender;">
+		<div id="card-image" class="carousel slide" data-ride="carousel" data-interval="3000">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+					<li data-target="#myCarousel" data-slide-to="3"></li>
+			</ol>
+			
+			<!-- WRAPPER FOR SLIDES -->
+			<div class="carousel-inner" role="listbox">
+				<% @listing.avatars.each_with_index do |pic, idx| %>
+			      	<div class="item <%= "active" if idx == 0 %>">
+			        	<%= image_tag (pic.square.url) %>
+			      	</div>
+		      	<%end%>
+		    </div>
+		</div>
+	</div>
+</div>
 <% if signed_in? %>
 	Listed By: <%= @listing.user.email %>
 	<br>
-	Name: <%= @listing.name%>
+	Name: <%= @listing.name %>
 	<br>
-	Location: <%= @listing.location%>
+	Location: <%= @listing.location %>
 	<br>
-	Home Type: <%= @listing.home_type%>
+	Home Type: <%= @listing.home_type %>
 	<br>
-	Price: <%= @listing.price%>
+	Price: <%= @listing.price %>
 	<br>
-	Accommodates <%= @listing.num_of_people%> People
-
-	<%= link_to "Delete", listing_path(@listing.id),
-		method: :delete,
-		data: { confirm: "Are you sure?" } %>
+	Accommodates <%= @listing.num_of_people %> People
+	<br>
+	<%= link_to "Reserve", new_listing_reservation_path(@listing.id) %>
+	<br>
+	<!-- THIS IS TO IMPLEMENT THE DELETE BUTTON -->
+	<% if @listing.user_id == current_user.id %>
+		<%= link_to "Delete", listing_path(@listing.id),
+			method: :delete,
+			data: { confirm: "Are you sure?" } %><br>
+		<%= link_to "Edit", edit_listing_path(@listing.id) %>
+	<% end %>
 <% else %>
 	Listed By: <%= @listing.user.email %>
 	<br>
-	Name: <%= @listing.name%>
+	Name: <%= @listing.name %>
 	<br>
-	Location: <%= @listing.location%>
+	Location: <%= @listing.location %>
 	<br>
-	Home Type: <%= @listing.home_type%>
+	Home Type: <%= @listing.home_type %>
 	<br>
-	Price: <%= @listing.price%>
+	Price: <%= @listing.price %>
 	<br>
-	Accommodates <%= @listing.num_of_people%> People
+	Accommodates <%= @listing.num_of_people %> People
 <% end %>
+<br>

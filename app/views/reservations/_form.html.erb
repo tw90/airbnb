@@ -1,0 +1,10 @@
+<%= form_for @reservation, url: listing_reservations_path(@listing.id) do |form| %>
+	Start Date: <%= form.date_field :startdate %>
+	<br>
+	End Date: <%= form.date_field :enddate %>
+	<br>
+	<%= form.label :headcount %>
+	<%= form.number_field :headcount %>
+	<br>
+	<%= form.submit "Confirm Reservation", class: "btn btn-success" %>
+<% end %>

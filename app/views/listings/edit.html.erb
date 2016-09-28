@@ -1,0 +1,12 @@
+<h2>Edit Listing</h2>
+		<% if @listing.errors.any? %>
+			<div id="errors">
+				<h2><%= pluralize(@listing.errors.count, "error")%> prevented this post from saving </h2>
+				<ul>
+					<% @listing.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+		<%= render 'form' %>

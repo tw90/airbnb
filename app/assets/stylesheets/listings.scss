@@ -7,12 +7,64 @@
 
 }
 
+/*VIDEO*/
+.video_container {
+ position: relative;
+ background:none;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ background-size: cover;
+ text-align: center;
+ color: #fff;
+ padding-top: 130px;
+ min-height: 500px;
+ letter-spacing: 2px;
+ font-family: "Montserrat", sans-serif;
+}
+/*VIDEO*/
+.video_container h1 {
+ font-size: 50px;
+ line-height: 1.3;
+}
+/*VIDEO*/
+.video_container h1 span {
+ font-size: 20px;
+ color: #e8f380 ;
+ border-bottom: 2px solid #e8f380 ;
+ padding-bottom: 12px;
+ line-height: 3;
+}
+/*VIDEO*/
+.photo {
+ position: absolute;
+ object-fit: contain;
+ z-index: -5;
+ bottom: 0px;
+ left: 0px;
+ width: 100%;
+}
+
 #cardDesign {
-/*	border: 1px black;
-	border-style: solid;
-	margin: 30px 90px 0 0 ;*/
-	
+	/*border: 1px black;
+	border-style: solid;*/
+	/*margin-right: 50px;*/
+	min-height: 500px;
+	max-height: 500px;
 	border:5px solid white;
 	border-radius: 10px;
+	overflow: hidden;
+	padding: 7px;
 }
-	
+
+.carousel .item{
+	height: 300px;
+}
+
+#card-image{
+	min-height: 300px;
+	max-height: 300px;
+}
+
+#card-content{
+
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  <style type="text/css">
+    h1{
+      color: blue;
+    }
+  </style>
+
+  <!-- DO INLINE CSS STYLING, BECAUSE WHEN YOU SEND EMAIL THE CSS FILE OR BOOTSTRAP WILL NOT BE LINKED  -->
+
+    <h1>Welcome to NEXT@AirBnB, <%= @listing.user.email %></h1>
+    <p>
+      You have successfully signed up to NEXT@AirBnB,
+      your username is: <%= @listing.user.email %>.<br>
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+
+    <p>You have successfully made a reservation </p>
+    <p>###</p>
+    <h1>Congratulations! You have received a booking from <%= @customer %></h1>
+    <p>###</p>
+  </body>
+</html>

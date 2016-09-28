@@ -17,5 +17,34 @@
 
 
 #navbar{
-	background-color: blue;
+	background-color: black;
 }
+
+/*to make the search-bar in the center of the navbar*/
+#searchbar {
+	position: fixed;
+	margin-left: -100px;
+	left: 50%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#profile-position{
+	float: left;
+}
+
+#body-container{
+	margin-top: 60px;
+}
+
+#profileNavBar{
+	height: 30px;
+	width: 30px;
+	border-radius: 25px;
+	display: inline-block;
+	float: right;
+	/*left: 800px;*/
+	margin-top: 15px;
+}
+
+

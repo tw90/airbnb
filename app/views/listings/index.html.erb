@@ -1,30 +1,72 @@
-<!-- SEARCH BAR -->
-<%= form_for Listing.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
-    <%= text_field_tag :term, params[:term], placeholder:"Where do you wanna go?" %>
-    <%= f.submit 'search', class: 'btn btn-primary' %>
-  <% end %>
+<!-- THIS PUTS A VIDEO IN THE PAGE -->
+<div class="video_container">
+    <h1><span>Rent unique places to stay from local hosts in 190+ countries.</span><br>Welcome <%=current_user.email if current_user != nil%></h1>
+          <video autoplay loop="loop" preload="auto" class="photo">
+             <!-- < %= video_tag "video.mp4", controls: true, autobuffer: true %> 
+               < %= video_tag "video.mp4", controls: true, autobuffer: true %>  -->
+             <source src="https://a0.muscache.com/airbnb/static/P1-background-vid-compressed.mp4" type='video/mp4'>
+               <source src="https://a0.muscache.com/airbnb/static/P1-background-vid-compressed.webm" type='video/webm'> 
+             <!-- <source src="video.mp4" type='video/mp4'>
+               <source src="video/mp4" type='video/mp4'> -->
+             <!-- <iframe src="https://www.youtube.com/embed/d9TpRfDdyU0" ></iframe> -->
+          </video>
+</div>
 
 <div class="container">
-	<h1 id="middleHeading">All Listings</h1>
+	<span><h1 id="middleHeading">All Listings</h1><%= link_to "Create new listing", new_listing_path %></span>
 		<div class="row">
-			<% @listings.each do |listings| %>
-				<div id="cardDesign" class="col-sm-4" style="background-color:lavender;">Listed By: <%= listings.user.email %>
-				<br>
-				Name: <%= listings.name %>
-				<br>
-				Location: <%= listings.location %>
-				<br>
-				Home Type: <%= listings.home_type %>
-				<br>
-				Price: <%= listings.price %>
-				<br>
-				Accommodates <%= listings.num_of_people %> People
-				<br>
-				----------------------------------------
-				<br>
-			</div>
+			<% @listings.each_with_index do |listings, index| %>
+				<div id="cardDesign" class="col-sm-4" style="background-color:lavender;">
+					<div id="card-image" class="carousel slide" data-ride="carousel" data-interval="3000">
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+	      					<li data-target="#myCarousal-<%= index %>" data-slide-to="0" class="active"></li>
+	      					<li data-target="#myCarousal-<%= index %>" data-slide-to="1"></li>
+	      					<li data-target="#myCarousal-<%= index %>" data-slide-to="2"></li>
+	      					<li data-target="#myCarousal-<%= index %>" data-slide-to="3"></li>
+    					</ol>
+						
+						<!-- WRAPPER FOR SLIDES -->
+						<div class="carousel-inner" role="listbox">
+							<% listings.avatars.each_with_index do |pic, idx| %>
+					      	<div class="item <%= "active" if idx == 0 %>">
+					        	<%= image_tag (pic.square.url) %>
+					      	</div>
+					      	<%end%>
+					    </div>
+					</div>
 
+					<div id="card-content">
+						<br>
+						
+						Listed By: <%= link_to listings.user.email, user_path(listings.user.id) %>
+						<br>
+						Name: <%= listings.name %>
+						<br>
+						Location: <%= listings.location %>
+						<br>
+						Home Type: <%= listings.home_type %>
+						<br>
+						Price: <%= listings.price %>
+						<br>
+						Accommodates <%= listings.num_of_people %> People
+						<br>
+						----------------------------------------
+						<br>
+						<%= link_to "Check It Out", listing_path(listings.id) if signed_in? %> |
+						<% if listings.user_id == current_user.id %>
+							<%= link_to "Edit", edit_listing_path(listings.id) %> |
+							<%= link_to "Delete", listing_path(listings.id), method: :delete, data: { confirm: "Are you sure?" } %>
+						<% end %>
+					</div>
+				</div>
 			<% end %>
 		</div>
 	<br>
+</div>
+
+<!-- <div>
+    < % (1..@total_pages).each do |page| %>
+        < %= link_to page, controller: "home", action: "index", page: page %>&nbsp;
+    < % end %>
 </div>

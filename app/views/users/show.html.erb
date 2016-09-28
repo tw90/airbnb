@@ -1,5 +1,22 @@
 Welcome! 
+
+<br>
+<!-- USER'S AVATAR -->
+<%= image_tag (@user.avatars[0].square.url) if @user.avatars.present? %>
 <br>
 This is <%= @user.email %>'s profile!
 <br>
-<%= link_to "Index Page", root_path %>
+<%= link_to "Update Profile", edit_user_path(current_user.id) if @user.id == current_user.id %>
+
+<!-- USER'S RESERVATIONS -->
+<h2>Reservations Made</h2>
+<% Reservation.all.each do |res| %>
+______________________________<br>
+	Start Date: <%= res.startdate %><br>
+	End Date:   <%= res.enddate %><br>
+	Place: 		<%= res.listing.location %><br>
+	Headcount:  <%= res.headcount %><br>
+	<%= link_to "Delete", listing_reservation_path(res.id, res.listing.id),
+		method: :delete,
+		data: { confirm: 'Are you sure?' } %><br>
+<% end %>

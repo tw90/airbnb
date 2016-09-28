@@ -3,6 +3,15 @@ class ListingsController < ApplicationController
 	#this means that before executing show, update, edit, destroy method, it finds what is the listing id
 	
 	def index 
+		# listings_per_page = 7
+  #   	params[:page] = 1 unless params[:page]
+  #   	first_listing = (params[:page].to_i - 1 ) * listings_per_page
+  #   	listings = Listing.all
+  #   	@total_pages = listings.count / listings_per_page
+  #   	if listings.count % listings_per_page > 0
+  #     		@total_pages += 1
+  #   	end
+  #     	@listings = listings[first_listing...(first_listing + listings_per_page)]
 		@listings = Listing.all 
 	end 
 
@@ -23,7 +32,19 @@ class ListingsController < ApplicationController
 	end
 	
 	def show
-		
+
+	end
+
+	def edit
+
+	end
+
+	def update
+		if @listing.update(listing_params)
+			redirect_to listing_path(@listing.id)
+		else
+			render 'edit'
+		end
 	end
 
 	def search
@@ -48,6 +69,6 @@ class ListingsController < ApplicationController
 	end
 
 	def listing_params
-		params.require(:listing).permit(:name, :location, :home_type, :price, :num_of_people, :user_id)
+		params.require(:listing).permit(:name, :location, :home_type, :price, :num_of_people, :user_id, {avatars:[]})
 	end
 end
