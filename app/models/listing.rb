@@ -1,8 +1,4 @@
-require 'elasticsearch/model'
-
 class Listing < ActiveRecord::Base
-	include Elasticsearch::Model
-	include Elasticsearch::Model::Callbacks
 	mount_uploaders :avatars, AvatarUploader
 	belongs_to :user
 	has_many :reservations
