@@ -40,7 +40,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Use Clearance with Mailer  
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  # config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # this is the defualt email used to send an email to users
   # config.action_mailer.delivery_method = :smtp
