@@ -35,6 +35,9 @@ gem 'omniauth'
 # Adding searchkick
 gem 'searchkick'
 
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
 # Adding carrierwave
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
