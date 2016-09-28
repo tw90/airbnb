@@ -28,15 +28,12 @@ class ListingsController < ApplicationController
 			# render "new"
 			redirect_to new_listing_path
 		end
-
 	end
 	
 	def show
-
 	end
 
 	def edit
-
 	end
 
 	def update

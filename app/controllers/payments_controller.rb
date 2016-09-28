@@ -14,7 +14,7 @@ class PaymentsController < ApplicationController
     render action: :new and return unless nonce
 
     @result = Braintree::Transaction.sale(
-      amount: "2000",
+      amount: "100",
       payment_method_nonce: params[:payment_method_nonce]
     )
 
