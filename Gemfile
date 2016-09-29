@@ -52,8 +52,6 @@ gem 'redis'
 
 gem 'braintree'
 
-gem 'unicorn'
-
 gem 'rack-timeout'
 
 # Use ActiveModel has_secure_password
@@ -80,6 +78,7 @@ group :development do
 group :production do 
 	gem 'pg'
 	gem 'rails_12factor'
+	gem 'unicorn'
 end
 
 end
