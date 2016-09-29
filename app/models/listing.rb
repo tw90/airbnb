@@ -1,7 +1,6 @@
 class Listing < ActiveRecord::Base
 	include Elasticsearch::Model
 	include Elasticsearch::Model::Callbacks
-	ignore_unavailable: true
 	mount_uploaders :avatars, AvatarUploader
 	belongs_to :user
 	has_many :reservations
