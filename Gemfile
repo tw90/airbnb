@@ -52,6 +52,10 @@ gem 'redis'
 
 gem 'braintree'
 
+gem 'unicorn'
+
+gem 'rack-timeout'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
