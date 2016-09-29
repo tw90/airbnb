@@ -23,7 +23,7 @@ class ListingsController < ApplicationController
 		@listing = current_user.listings.new(listing_params)
 		if @listing.save
 			#i want to go to my listing show page
-			redirect_to listing_path(@listing.id)
+			redirect_to listing_path(@listing)
 		else
 			# render "new"
 			redirect_to new_listing_path
